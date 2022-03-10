@@ -41,14 +41,17 @@
 import argparse
 
 import mlflow
+import mlflow.sklearn
+import pandas as pd
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
 from scripts.data import X_train, X_test, y_train, y_test
 
+mlflow.set_experiment("test1")
 parser = argparse.ArgumentParser()
-parser.add_argument("--n-neighbors", type=int, default=5)
+parser.add_argument("--n-neighbors", type=int, default=20)
 args, _ = parser.parse_known_args()
 
 
@@ -76,3 +79,4 @@ with mlflow.start_run():
     )
 
     mlflow.sklearn.log_model(pipe, "models")
+

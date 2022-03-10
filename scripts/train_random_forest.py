@@ -41,12 +41,15 @@
 import argparse
 
 import mlflow
+import mlflow.sklearn
+import pandas as pd
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
 from scripts.data import X_train, X_test, y_train, y_test
 
+mlflow.set_experiment("test2")
 parser = argparse.ArgumentParser()
 parser.add_argument("--max-depth", type=int, default=3)
 parser.add_argument("--n-estimators", type=int, default=20)
